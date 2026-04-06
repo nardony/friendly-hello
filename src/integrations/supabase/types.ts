@@ -195,10 +195,20 @@ export type Database = {
           access_key: string | null
           background_image: string | null
           checkout_badge_text: string | null
+          checkout_balance_label: string | null
           checkout_benefits: Json | null
+          checkout_button_text: string | null
+          checkout_coupon_enabled: boolean | null
+          checkout_coupon_label: string | null
           checkout_enabled: boolean | null
+          checkout_invite_enabled: boolean | null
+          checkout_invite_label: string | null
+          checkout_invite_placeholder: string | null
           checkout_product_description: string | null
           checkout_product_subtitle: string | null
+          checkout_security_text: string | null
+          checkout_show_balance: boolean | null
+          checkout_whatsapp_message: string | null
           color_accent: string | null
           color_background: string | null
           color_icons: string | null
@@ -246,7 +256,7 @@ export type Database = {
           pix_name: string | null
           pix_qr_base: string | null
           price_current: number | null
-          price_installments: string | null
+          price_installments: number | null
           price_original: number | null
           pricing_tiers: Json | null
           product_image: string | null
@@ -280,10 +290,20 @@ export type Database = {
           access_key?: string | null
           background_image?: string | null
           checkout_badge_text?: string | null
+          checkout_balance_label?: string | null
           checkout_benefits?: Json | null
+          checkout_button_text?: string | null
+          checkout_coupon_enabled?: boolean | null
+          checkout_coupon_label?: string | null
           checkout_enabled?: boolean | null
+          checkout_invite_enabled?: boolean | null
+          checkout_invite_label?: string | null
+          checkout_invite_placeholder?: string | null
           checkout_product_description?: string | null
           checkout_product_subtitle?: string | null
+          checkout_security_text?: string | null
+          checkout_show_balance?: boolean | null
+          checkout_whatsapp_message?: string | null
           color_accent?: string | null
           color_background?: string | null
           color_icons?: string | null
@@ -331,7 +351,7 @@ export type Database = {
           pix_name?: string | null
           pix_qr_base?: string | null
           price_current?: number | null
-          price_installments?: string | null
+          price_installments?: number | null
           price_original?: number | null
           pricing_tiers?: Json | null
           product_image?: string | null
@@ -365,10 +385,20 @@ export type Database = {
           access_key?: string | null
           background_image?: string | null
           checkout_badge_text?: string | null
+          checkout_balance_label?: string | null
           checkout_benefits?: Json | null
+          checkout_button_text?: string | null
+          checkout_coupon_enabled?: boolean | null
+          checkout_coupon_label?: string | null
           checkout_enabled?: boolean | null
+          checkout_invite_enabled?: boolean | null
+          checkout_invite_label?: string | null
+          checkout_invite_placeholder?: string | null
           checkout_product_description?: string | null
           checkout_product_subtitle?: string | null
+          checkout_security_text?: string | null
+          checkout_show_balance?: boolean | null
+          checkout_whatsapp_message?: string | null
           color_accent?: string | null
           color_background?: string | null
           color_icons?: string | null
@@ -416,7 +446,7 @@ export type Database = {
           pix_name?: string | null
           pix_qr_base?: string | null
           price_current?: number | null
-          price_installments?: string | null
+          price_installments?: number | null
           price_original?: number | null
           pricing_tiers?: Json | null
           product_image?: string | null
