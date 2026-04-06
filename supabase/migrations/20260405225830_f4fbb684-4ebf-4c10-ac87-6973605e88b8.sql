@@ -1,0 +1,1 @@
+ALTER TABLE public.landing_pages ADD COLUMN video_hide_controls boolean DEFAULT true;

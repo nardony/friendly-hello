@@ -1,0 +1,1 @@
+UPDATE homepage_settings SET value = jsonb_set(value::jsonb, '{price_current}', '199')::jsonb WHERE key = 'hero';

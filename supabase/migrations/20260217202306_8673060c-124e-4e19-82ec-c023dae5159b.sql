@@ -1,0 +1,1 @@
+ALTER TABLE public.landing_pages ADD COLUMN why_choose_items jsonb DEFAULT '[]'::jsonb;
