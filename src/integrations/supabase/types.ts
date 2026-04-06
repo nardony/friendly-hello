@@ -14,6 +14,320 @@ export type Database = {
   }
   public: {
     Tables: {
+      app_settings: {
+        Row: {
+          created_at: string
+          id: string
+          key: string
+          updated_at: string
+          value: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key: string
+          updated_at?: string
+          value?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: string | null
+        }
+        Relationships: []
+      }
+      balance_transactions: {
+        Row: {
+          admin_id: string | null
+          amount: number
+          created_at: string
+          description: string | null
+          id: string
+          order_id: string | null
+          type: string
+          user_id: string
+        }
+        Insert: {
+          admin_id?: string | null
+          amount: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          order_id?: string | null
+          type: string
+          user_id: string
+        }
+        Update: {
+          admin_id?: string | null
+          amount?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          order_id?: string | null
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      customers: {
+        Row: {
+          created_at: string
+          created_by: string
+          credits_purchased: number
+          email: string | null
+          id: string
+          landing_page_id: string | null
+          name: string
+          notes: string | null
+          order_id: string | null
+          purchase_type: string
+          purchased_at: string
+          status: string
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          credits_purchased?: number
+          email?: string | null
+          id?: string
+          landing_page_id?: string | null
+          name: string
+          notes?: string | null
+          order_id?: string | null
+          purchase_type?: string
+          purchased_at?: string
+          status?: string
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          credits_purchased?: number
+          email?: string | null
+          id?: string
+          landing_page_id?: string | null
+          name?: string
+          notes?: string | null
+          order_id?: string | null
+          purchase_type?: string
+          purchased_at?: string
+          status?: string
+          whatsapp?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "customers_landing_page_id_fkey"
+            columns: ["landing_page_id"]
+            isOneToOne: false
+            referencedRelation: "landing_pages"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "customers_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      daily_renewals: {
+        Row: {
+          created_at: string
+          daily_limit: number
+          id: string
+          is_active: boolean
+          last_renewed_at: string | null
+          tier_name: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          daily_limit?: number
+          id?: string
+          is_active?: boolean
+          last_renewed_at?: string | null
+          tier_name: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          daily_limit?: number
+          id?: string
+          is_active?: boolean
+          last_renewed_at?: string | null
+          tier_name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      homepage_settings: {
+        Row: {
+          created_at: string
+          id: string
+          key: string
+          updated_at: string
+          value: Json | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key: string
+          updated_at?: string
+          value?: Json | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: Json | null
+        }
+        Relationships: []
+      }
+      landing_pages: {
+        Row: {
+          created_at: string
+          id: string
+          is_published: boolean
+          settings: Json | null
+          slug: string
+          title: string
+          updated_at: string
+          user_id: string
+          whatsapp_number: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          settings?: Json | null
+          slug: string
+          title?: string
+          updated_at?: string
+          user_id: string
+          whatsapp_number?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          settings?: Json | null
+          slug?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+          whatsapp_number?: string | null
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          coupon_code: string | null
+          created_at: string
+          credits: number
+          customer_email: string
+          customer_name: string
+          customer_whatsapp: string
+          id: string
+          invite_link: string | null
+          landing_page_id: string | null
+          price: number
+          status: string
+          tier_id: string | null
+          tier_name: string
+          user_id: string
+        }
+        Insert: {
+          coupon_code?: string | null
+          created_at?: string
+          credits?: number
+          customer_email: string
+          customer_name: string
+          customer_whatsapp: string
+          id?: string
+          invite_link?: string | null
+          landing_page_id?: string | null
+          price?: number
+          status?: string
+          tier_id?: string | null
+          tier_name: string
+          user_id: string
+        }
+        Update: {
+          coupon_code?: string | null
+          created_at?: string
+          credits?: number
+          customer_email?: string
+          customer_name?: string
+          customer_whatsapp?: string
+          id?: string
+          invite_link?: string | null
+          landing_page_id?: string | null
+          price?: number
+          status?: string
+          tier_id?: string | null
+          tier_name?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_landing_page_id_fkey"
+            columns: ["landing_page_id"]
+            isOneToOne: false
+            referencedRelation: "landing_pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_balances: {
+        Row: {
+          balance: number
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          balance?: number
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          balance?: number
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
@@ -43,6 +357,17 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      update_user_balance: {
+        Args: {
+          _admin_id?: string
+          _amount: number
+          _description?: string
+          _order_id?: string
+          _type: string
+          _user_id: string
+        }
+        Returns: undefined
       }
     }
     Enums: {
