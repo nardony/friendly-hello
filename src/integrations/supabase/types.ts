@@ -14,6 +14,572 @@ export type Database = {
   }
   public: {
     Tables: {
+      app_settings: {
+        Row: {
+          created_at: string
+          id: string
+          key: string
+          updated_at: string
+          value: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key: string
+          updated_at?: string
+          value?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: string | null
+        }
+        Relationships: []
+      }
+      balance_transactions: {
+        Row: {
+          admin_id: string | null
+          amount: number
+          created_at: string
+          description: string | null
+          id: string
+          order_id: string | null
+          type: string
+          user_id: string
+        }
+        Insert: {
+          admin_id?: string | null
+          amount: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          order_id?: string | null
+          type: string
+          user_id: string
+        }
+        Update: {
+          admin_id?: string | null
+          amount?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          order_id?: string | null
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      customers: {
+        Row: {
+          created_at: string
+          created_by: string
+          credits_purchased: number
+          email: string | null
+          id: string
+          landing_page_id: string | null
+          name: string
+          notes: string | null
+          order_id: string | null
+          purchase_type: string
+          purchased_at: string
+          status: string
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          credits_purchased?: number
+          email?: string | null
+          id?: string
+          landing_page_id?: string | null
+          name: string
+          notes?: string | null
+          order_id?: string | null
+          purchase_type?: string
+          purchased_at?: string
+          status?: string
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          credits_purchased?: number
+          email?: string | null
+          id?: string
+          landing_page_id?: string | null
+          name?: string
+          notes?: string | null
+          order_id?: string | null
+          purchase_type?: string
+          purchased_at?: string
+          status?: string
+          whatsapp?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "customers_landing_page_id_fkey"
+            columns: ["landing_page_id"]
+            isOneToOne: false
+            referencedRelation: "landing_pages"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "customers_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      daily_renewals: {
+        Row: {
+          created_at: string
+          daily_limit: number
+          id: string
+          is_active: boolean
+          last_renewed_at: string | null
+          tier_name: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          daily_limit?: number
+          id?: string
+          is_active?: boolean
+          last_renewed_at?: string | null
+          tier_name: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          daily_limit?: number
+          id?: string
+          is_active?: boolean
+          last_renewed_at?: string | null
+          tier_name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      homepage_settings: {
+        Row: {
+          created_at: string
+          id: string
+          key: string
+          updated_at: string
+          value: Json | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key: string
+          updated_at?: string
+          value?: Json | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: Json | null
+        }
+        Relationships: []
+      }
+      landing_pages: {
+        Row: {
+          about_description: string | null
+          about_title: string | null
+          access_key: string | null
+          background_image: string | null
+          checkout_badge_text: string | null
+          checkout_balance_label: string | null
+          checkout_benefits: Json | null
+          checkout_button_text: string | null
+          checkout_coupon_enabled: boolean | null
+          checkout_coupon_label: string | null
+          checkout_enabled: boolean | null
+          checkout_invite_enabled: boolean | null
+          checkout_invite_label: string | null
+          checkout_invite_placeholder: string | null
+          checkout_product_description: string | null
+          checkout_product_subtitle: string | null
+          checkout_security_text: string | null
+          checkout_show_balance: boolean | null
+          checkout_whatsapp_message: string | null
+          color_accent: string | null
+          color_background: string | null
+          color_icons: string | null
+          color_primary: string | null
+          color_text: string | null
+          color_text_highlight: string | null
+          created_at: string
+          cta_subtitle: string | null
+          cta_title: string | null
+          custom_package_options: Json | null
+          donation_description: string | null
+          donation_enabled: boolean | null
+          donation_pix_key: string | null
+          donation_pix_name: string | null
+          donation_qr_code: string | null
+          donation_title: string | null
+          facebook_pixel: string | null
+          faqs: Json | null
+          features: Json | null
+          font_body: string | null
+          font_heading: string | null
+          google_analytics: string | null
+          google_tag_manager: string | null
+          hero_badge_text: string | null
+          hero_cta_link: string | null
+          hero_cta_text: string | null
+          hero_daily_renewal_text: string | null
+          hero_extra_prices: Json | null
+          hero_extra_renewals: Json | null
+          hero_image: string | null
+          hero_subtitle: string | null
+          hero_title: string | null
+          hero_title_highlight: string | null
+          how_it_works: Json | null
+          id: string
+          is_published: boolean
+          logo_image: string | null
+          logo_size: string | null
+          meta_description: string | null
+          meta_title: string | null
+          nav_buttons: Json | null
+          og_image: string | null
+          pix_enabled: boolean | null
+          pix_key: string | null
+          pix_name: string | null
+          pix_qr_base: string | null
+          price_current: number | null
+          price_installments: number | null
+          price_original: number | null
+          pricing_tiers: Json | null
+          product_image: string | null
+          promo_link: string | null
+          promo_text: string | null
+          section_order: Json | null
+          secure_purchase_items: Json | null
+          settings: Json | null
+          slug: string
+          social_proof_credits: Json | null
+          social_proof_customers: Json | null
+          social_proof_enabled: boolean | null
+          social_proof_product_name: string | null
+          testimonials: Json | null
+          tiktok_pixel: string | null
+          title: string
+          updated_at: string
+          user_id: string
+          video_enabled: boolean | null
+          video_hide_controls: boolean | null
+          video_thumbnail: string | null
+          video_title: string | null
+          video_url: string | null
+          whatsapp_message: string | null
+          whatsapp_number: string | null
+          why_choose_items: Json | null
+        }
+        Insert: {
+          about_description?: string | null
+          about_title?: string | null
+          access_key?: string | null
+          background_image?: string | null
+          checkout_badge_text?: string | null
+          checkout_balance_label?: string | null
+          checkout_benefits?: Json | null
+          checkout_button_text?: string | null
+          checkout_coupon_enabled?: boolean | null
+          checkout_coupon_label?: string | null
+          checkout_enabled?: boolean | null
+          checkout_invite_enabled?: boolean | null
+          checkout_invite_label?: string | null
+          checkout_invite_placeholder?: string | null
+          checkout_product_description?: string | null
+          checkout_product_subtitle?: string | null
+          checkout_security_text?: string | null
+          checkout_show_balance?: boolean | null
+          checkout_whatsapp_message?: string | null
+          color_accent?: string | null
+          color_background?: string | null
+          color_icons?: string | null
+          color_primary?: string | null
+          color_text?: string | null
+          color_text_highlight?: string | null
+          created_at?: string
+          cta_subtitle?: string | null
+          cta_title?: string | null
+          custom_package_options?: Json | null
+          donation_description?: string | null
+          donation_enabled?: boolean | null
+          donation_pix_key?: string | null
+          donation_pix_name?: string | null
+          donation_qr_code?: string | null
+          donation_title?: string | null
+          facebook_pixel?: string | null
+          faqs?: Json | null
+          features?: Json | null
+          font_body?: string | null
+          font_heading?: string | null
+          google_analytics?: string | null
+          google_tag_manager?: string | null
+          hero_badge_text?: string | null
+          hero_cta_link?: string | null
+          hero_cta_text?: string | null
+          hero_daily_renewal_text?: string | null
+          hero_extra_prices?: Json | null
+          hero_extra_renewals?: Json | null
+          hero_image?: string | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
+          hero_title_highlight?: string | null
+          how_it_works?: Json | null
+          id?: string
+          is_published?: boolean
+          logo_image?: string | null
+          logo_size?: string | null
+          meta_description?: string | null
+          meta_title?: string | null
+          nav_buttons?: Json | null
+          og_image?: string | null
+          pix_enabled?: boolean | null
+          pix_key?: string | null
+          pix_name?: string | null
+          pix_qr_base?: string | null
+          price_current?: number | null
+          price_installments?: number | null
+          price_original?: number | null
+          pricing_tiers?: Json | null
+          product_image?: string | null
+          promo_link?: string | null
+          promo_text?: string | null
+          section_order?: Json | null
+          secure_purchase_items?: Json | null
+          settings?: Json | null
+          slug: string
+          social_proof_credits?: Json | null
+          social_proof_customers?: Json | null
+          social_proof_enabled?: boolean | null
+          social_proof_product_name?: string | null
+          testimonials?: Json | null
+          tiktok_pixel?: string | null
+          title?: string
+          updated_at?: string
+          user_id: string
+          video_enabled?: boolean | null
+          video_hide_controls?: boolean | null
+          video_thumbnail?: string | null
+          video_title?: string | null
+          video_url?: string | null
+          whatsapp_message?: string | null
+          whatsapp_number?: string | null
+          why_choose_items?: Json | null
+        }
+        Update: {
+          about_description?: string | null
+          about_title?: string | null
+          access_key?: string | null
+          background_image?: string | null
+          checkout_badge_text?: string | null
+          checkout_balance_label?: string | null
+          checkout_benefits?: Json | null
+          checkout_button_text?: string | null
+          checkout_coupon_enabled?: boolean | null
+          checkout_coupon_label?: string | null
+          checkout_enabled?: boolean | null
+          checkout_invite_enabled?: boolean | null
+          checkout_invite_label?: string | null
+          checkout_invite_placeholder?: string | null
+          checkout_product_description?: string | null
+          checkout_product_subtitle?: string | null
+          checkout_security_text?: string | null
+          checkout_show_balance?: boolean | null
+          checkout_whatsapp_message?: string | null
+          color_accent?: string | null
+          color_background?: string | null
+          color_icons?: string | null
+          color_primary?: string | null
+          color_text?: string | null
+          color_text_highlight?: string | null
+          created_at?: string
+          cta_subtitle?: string | null
+          cta_title?: string | null
+          custom_package_options?: Json | null
+          donation_description?: string | null
+          donation_enabled?: boolean | null
+          donation_pix_key?: string | null
+          donation_pix_name?: string | null
+          donation_qr_code?: string | null
+          donation_title?: string | null
+          facebook_pixel?: string | null
+          faqs?: Json | null
+          features?: Json | null
+          font_body?: string | null
+          font_heading?: string | null
+          google_analytics?: string | null
+          google_tag_manager?: string | null
+          hero_badge_text?: string | null
+          hero_cta_link?: string | null
+          hero_cta_text?: string | null
+          hero_daily_renewal_text?: string | null
+          hero_extra_prices?: Json | null
+          hero_extra_renewals?: Json | null
+          hero_image?: string | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
+          hero_title_highlight?: string | null
+          how_it_works?: Json | null
+          id?: string
+          is_published?: boolean
+          logo_image?: string | null
+          logo_size?: string | null
+          meta_description?: string | null
+          meta_title?: string | null
+          nav_buttons?: Json | null
+          og_image?: string | null
+          pix_enabled?: boolean | null
+          pix_key?: string | null
+          pix_name?: string | null
+          pix_qr_base?: string | null
+          price_current?: number | null
+          price_installments?: number | null
+          price_original?: number | null
+          pricing_tiers?: Json | null
+          product_image?: string | null
+          promo_link?: string | null
+          promo_text?: string | null
+          section_order?: Json | null
+          secure_purchase_items?: Json | null
+          settings?: Json | null
+          slug?: string
+          social_proof_credits?: Json | null
+          social_proof_customers?: Json | null
+          social_proof_enabled?: boolean | null
+          social_proof_product_name?: string | null
+          testimonials?: Json | null
+          tiktok_pixel?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+          video_enabled?: boolean | null
+          video_hide_controls?: boolean | null
+          video_thumbnail?: string | null
+          video_title?: string | null
+          video_url?: string | null
+          whatsapp_message?: string | null
+          whatsapp_number?: string | null
+          why_choose_items?: Json | null
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          coupon_code: string | null
+          created_at: string
+          credits: number
+          customer_email: string
+          customer_name: string
+          customer_whatsapp: string
+          id: string
+          invite_link: string | null
+          landing_page_id: string | null
+          price: number
+          status: string
+          tier_id: string | null
+          tier_name: string
+          user_id: string
+        }
+        Insert: {
+          coupon_code?: string | null
+          created_at?: string
+          credits?: number
+          customer_email: string
+          customer_name: string
+          customer_whatsapp: string
+          id?: string
+          invite_link?: string | null
+          landing_page_id?: string | null
+          price?: number
+          status?: string
+          tier_id?: string | null
+          tier_name: string
+          user_id: string
+        }
+        Update: {
+          coupon_code?: string | null
+          created_at?: string
+          credits?: number
+          customer_email?: string
+          customer_name?: string
+          customer_whatsapp?: string
+          id?: string
+          invite_link?: string | null
+          landing_page_id?: string | null
+          price?: number
+          status?: string
+          tier_id?: string | null
+          tier_name?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_landing_page_id_fkey"
+            columns: ["landing_page_id"]
+            isOneToOne: false
+            referencedRelation: "landing_pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_balances: {
+        Row: {
+          balance: number
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          balance?: number
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          balance?: number
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
@@ -43,6 +609,17 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      update_user_balance: {
+        Args: {
+          _admin_id?: string
+          _amount: number
+          _description?: string
+          _order_id?: string
+          _type: string
+          _user_id: string
+        }
+        Returns: undefined
       }
     }
     Enums: {
