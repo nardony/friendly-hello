@@ -1,16 +1,51 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useCallback } from "react";
+import ChatSidebar from "@/components/ChatSidebar";
+import ChatArea from "@/components/ChatArea";
+import EmptyChat from "@/components/EmptyChat";
+import { mockChats, Chat, Message } from "@/data/mockChats";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [chats, setChats] = useState<Chat[]>(mockChats);
+  const [activeChat, setActiveChat] = useState<string | null>(null);
+
+  const currentChat = chats.find((c) => c.id === activeChat) ?? null;
+
+  const handleSendMessage = useCallback(
+    (chatId: string, text: string) => {
+      const newMsg: Message = {
+        id: `m${Date.now()}`,
+        text,
+        time: new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+        sent: true,
+      };
+      setChats((prev) =>
+        prev.map((c) =>
+          c.id === chatId
+            ? { ...c, messages: [...c.messages, newMsg], lastMessage: text, time: newMsg.time }
+            : c
+        )
+      );
+    },
+    []
+  );
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="flex h-screen w-full overflow-hidden bg-background">
+      {/* Sidebar */}
+      <div className="w-[360px] flex-shrink-0">
+        <ChatSidebar chats={chats} activeChat={activeChat} onSelectChat={setActiveChat} />
+      </div>
+
+      {/* Main area */}
+      <div className="flex-1">
+        {currentChat ? (
+          <ChatArea chat={currentChat} onSendMessage={handleSendMessage} />
+        ) : (
+          <EmptyChat />
+        )}
+      </div>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
