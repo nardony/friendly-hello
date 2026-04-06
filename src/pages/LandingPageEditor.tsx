@@ -477,6 +477,16 @@ const LandingPageEditor = () => {
     checkout_badge_text: draft.checkout_badge_text || 'OFERTA LIMITADA',
     checkout_benefits: draft.checkout_benefits || [],
     checkout_enabled: draft.checkout_enabled ?? true,
+    checkout_show_balance: draft.checkout_show_balance ?? true,
+    checkout_balance_label: draft.checkout_balance_label || 'Seu saldo:',
+    checkout_security_text: draft.checkout_security_text || 'Pagamento 100% seguro',
+    checkout_invite_enabled: draft.checkout_invite_enabled ?? true,
+    checkout_invite_label: draft.checkout_invite_label || 'Link de Convite',
+    checkout_invite_placeholder: draft.checkout_invite_placeholder || 'https://lovable.dev/invite/...',
+    checkout_coupon_enabled: draft.checkout_coupon_enabled ?? true,
+    checkout_coupon_label: draft.checkout_coupon_label || 'Cupom de Desconto',
+    checkout_button_text: draft.checkout_button_text || 'Continuar para Pagamento',
+    checkout_whatsapp_message: draft.checkout_whatsapp_message || null,
     nav_buttons: draft.nav_buttons || defaultData.nav_buttons,
   });
 
